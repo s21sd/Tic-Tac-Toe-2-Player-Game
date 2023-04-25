@@ -2,7 +2,6 @@ package com.example.tictactoe2playergame;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,12 +21,9 @@ public class AddPlayer extends AppCompatActivity {
 
         Button againComp=findViewById(R.id.compagainst);
 
-        againComp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(AddPlayer.this, singleplayer.class);
-                startActivity(intent);
-            }
+        againComp.setOnClickListener(view -> {
+            Intent intent =new Intent(AddPlayer.this, singleplayer.class);
+            startActivity(intent);
         });
 
 
