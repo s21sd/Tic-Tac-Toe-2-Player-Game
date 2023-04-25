@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPlayer"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/pagebkg">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ENTER \n PLAYERS NAMES"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/playerone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/lavenderborder"
+                android:drawableLeft="@drawable/ic_xicon"
+                android:hint="Enter player one name"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:textColor="@color/lavender"
+                android:textStyle="italic"
+
+                tools:ignore="Autofill,HardcodedText,RtlHardcoded,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
+
+            <EditText
+                android:id="@+id/playertwo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/lavenderborder"
+                android:drawableLeft="@drawable/ic_oicon"
+                android:hint="Enter player two name"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:textColor="@color/lavender"
+                android:textStyle="italic"
+
+                tools:ignore="Autofill,HardcodedText,RtlHardcoded,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
+
+            <Button
+                android:id="@+id/startgamebtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:text="Start Game"
+                android:textSize="18dp"
+                app:cornerRadius="20dp"
+                tools:ignore="HardcodedText,SpUsage,TextContrastCheck,VisualLintButtonSize,TextSizeCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Or"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/compagainst"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:text="Play against Robot"
+                android:textSize="18dp"
+                app:cornerRadius="20dp"
+                tools:ignore="HardcodedText,SpUsage,TextContrastCheck,VisualLintButtonSize,TextSizeCheck" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
