@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Random;
-
 public class singleplayer extends AppCompatActivity {
 
     TextView playeronename,playertwoname;
@@ -22,12 +20,17 @@ public class singleplayer extends AppCompatActivity {
     static Button button2;
     @SuppressLint("StaticFieldLeak")
     static Button button3;
+    @SuppressLint("StaticFieldLeak")
     static Button button4;
     @SuppressLint("StaticFieldLeak")
     static Button button5;
+    @SuppressLint("StaticFieldLeak")
     static Button button6;
+    @SuppressLint("StaticFieldLeak")
     static Button button7;
+    @SuppressLint("StaticFieldLeak")
     static Button button8;
+    @SuppressLint("StaticFieldLeak")
     static Button button9;
     private static boolean gameover = false;
 
@@ -175,43 +178,105 @@ public class singleplayer extends AppCompatActivity {
         return  true;
     }
 
-
-    public void computerMove()
-    {
+    public void computerMove() {
         boolean moveMade = false;
-        while(!moveMade)
-        {
-            Random rand=new Random();
-            int i=rand.nextInt(3);
-            int j=rand.nextInt(3);
+        while(!moveMade) {
+            int[] bestMove = new int[2];
+            int bestScore = Integer.MIN_VALUE;
 
-            if(buttons[i][j].getText().toString().equals(""))
-            {
-                buttons[i][j].setText("O");
-                moveMade=true;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (buttons[i][j].getText().toString().equals("")) {
+                        buttons[i][j].setText("O");
+                        int currentScore = minimax(2, Integer.MIN_VALUE, Integer.MAX_VALUE, false);
+                        buttons[i][j].setText("");
+
+                        if (currentScore > bestScore) {
+                            bestScore = currentScore;
+                            bestMove[0] = i;
+                            bestMove[1] = j;
+                        }
+                    }
+                }
             }
-            if(checkforWin())
-            {
-                gameover=true;
-                singleDialog singleDialog =new singleDialog(singleplayer.this,"Computer Won", singleplayer.this);
+
+            buttons[bestMove[0]][bestMove[1]].setText("O");
+            moveMade = true;
+
+            if(checkforWin()) {
+                gameover = true;
+                singleDialog singleDialog = new singleDialog(singleplayer.this, "Computer Won", singleplayer.this);
                 singleDialog.setCancelable(false);
                 singleDialog.show();
-
-            }
-            else if(checkforDraw())
-            {
-                gameover=true;
-                singleDialog singleDialog =new singleDialog(singleplayer.this,"Draw", singleplayer.this);
+            } else if(checkforDraw()) {
+                gameover = true;
+                singleDialog singleDialog = new singleDialog(singleplayer.this, "Draw", singleplayer.this);
                 singleDialog.setCancelable(false);
                 singleDialog.show();
+            } else {
+                player1Turn = true;
             }
-             else{
-                 player1Turn=true;
-            }
+        }
+    }
 
+    private int minimax(int depth, int alpha, int beta, boolean maximizingPlayer) {
+        if (checkforWin() && maximizingPlayer) {
+            return -1;
+        } else if (checkforWin() && !maximizingPlayer) {
+            return 1;
+        } else if (checkforDraw()) {
+            return 0;
         }
 
+        if (depth == 0) {
+            return 0;
+        }
+
+        if (maximizingPlayer) {
+            int bestScore = Integer.MIN_VALUE;
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (buttons[i][j].getText().toString().equals("")) {
+                        buttons[i][j].setText("O");
+                        int score = minimax(depth - 1, alpha, beta, false);
+                        buttons[i][j].setText("");
+
+                        bestScore = Math.max(bestScore, score);
+                        alpha = Math.max(alpha, score);
+
+                        if (beta <= alpha) {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return bestScore;
+        } else {
+            int bestScore = Integer.MAX_VALUE;
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (buttons[i][j].getText().toString().equals("")) {
+                        buttons[i][j].setText("X");
+                        int score = minimax(depth - 1, alpha, beta, true);
+                        buttons[i][j].setText("");
+
+                        bestScore = Math.min(bestScore, score);
+                        beta = Math.min(beta, score);
+
+                        if (beta <= alpha) {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return bestScore;
+        }
     }
+
     public static void newGame()
     {
 
