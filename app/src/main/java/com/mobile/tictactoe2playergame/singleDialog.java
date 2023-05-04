@@ -1,7 +1,6 @@
-package com.example.tictactoe2playergame;
+package com.mobile.tictactoe2playergame;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -33,7 +32,7 @@ public class singleDialog extends Dialog {
         startagain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                com.example.tictactoe2playergame.singleplayer.newGame();
+                com.mobile.tictactoe2playergame.singleplayer.newGame();
                 dismiss();
             }
         });

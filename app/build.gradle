@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.tictactoe2playergame'
+    namespace 'com.mobile.tictactoe2playergame'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.tictactoe2playergame"
+        applicationId "com.mobile.tictactoe2playergame"
         minSdk 19
         targetSdk 33
         versionCode 1

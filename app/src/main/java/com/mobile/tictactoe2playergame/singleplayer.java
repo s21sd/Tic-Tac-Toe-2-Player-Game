@@ -1,4 +1,4 @@
-package com.example.tictactoe2playergame;
+package com.mobile.tictactoe2playergame;
 
 import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
